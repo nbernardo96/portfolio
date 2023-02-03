@@ -56,10 +56,11 @@
 
     &:hover {
         color: #FFF;
+        background: $colorpink !important;
         -webkit-animation-name: button-push;
         animation-name: button-push;
-        -webkit-animation-duration: 0.3s;
-        animation-duration: 0.3s;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
         -webkit-animation-timing-function: linear;
         animation-timing-function: linear;
         -webkit-animation-iteration-count: 1;
