@@ -77,6 +77,17 @@ function Header({ light, logoSource, toggleMenu, headerToggler }) {
             <li>
               <Link
                 activeClass="active"
+                to="section-projects"
+                spy={true}
+                smooth={true}
+                duration={500}
+              >
+                <i className="icon-layers"></i>Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                activeClass="active"
                 to="section-contact"
                 spy={true}
                 smooth={true}

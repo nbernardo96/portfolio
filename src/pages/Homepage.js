@@ -7,6 +7,7 @@ import Brandlogos from "../components/sections/Brandlogos";
 import Contact from "../components/sections/Contact";
 import Experiences from "../components/sections/Experiences";
 import Herosection from "../components/sections/Herosection";
+import Works from "../components/sections/Works"
 
 function Homepage() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -41,9 +42,9 @@ function Homepage() {
         <Element name="section-experiences">
           <Experiences />
         </Element>
-        {/* <Element name="section-works">
+        <Element name="section-projects">
           <Works />
-        </Element> */}
+        </Element>
         <Element name="section-brandlogos">
           <Brandlogos />
         </Element>

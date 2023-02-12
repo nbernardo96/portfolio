@@ -10,121 +10,63 @@ const filters = [
   },
   {
     id: 2,
-    text: "creative",
+    text: "personal",
   },
   {
     id: 3,
-    text: "art",
+    text: "professional",
   },
   {
     id: 4,
-    text: "design",
-  },
-  {
-    id: 5,
-    text: "branding",
-  },
+    text: "school",
+  }
 ];
 
 const allData = [
   {
     id: 1,
-    title: "Project Managment Illustration",
-    category: "art",
-    image: "images/works/1.svg",
-    popupLink: ["images/works/1.svg"],
+    title: "Portfolio (2022)",
+    category: "personal",
+    description: "2022 online portfolio built with Next.js and Bootstrap",
+    image: "images/works/portfolio-2022.png",
+    popupLink: ["images/works/portfolio-2022.png"],
+    link: "https://nicolebernardo-portfolio-2022.herokuapp.com/"
   },
   {
     id: 2,
-    title: "Guest App Walkthrough Screens",
-    category: "creative",
-    image: "images/works/2.svg",
-    popupLink: [
-      "images/works/2.svg",
-      "images/works/5.svg",
-      "images/works/6.svg",
-    ],
+    title: "Sunpunch",
+    category: "professional",
+    image: "images/works/sunpunch.png",
+    description: "Online clock in site built using React and Django",
+    popupLink: ["images/works/sunpunch.gif"],
   },
   {
     id: 3,
-    title: "Delivery App Wireframe",
-    category: "branding",
-    image: "images/works/3.svg",
-    popupLink: ["https://www.youtube.com/watch?v=qf9z4ulfmYw"],
+    title: "Queue Site",
+    category: "professional",
+    description: "Web application dedicated for clients who want to place an order for a customized Flyer or Business Card",
+    image: "images/works/queue-site.png",
+    popupLink: ["images/works/queue-site.gif"],
   },
   {
     id: 4,
-    title: "Onboarding Motivation",
-    category: "creative",
-    image: "images/works/4.svg",
+    title: "Gator Media",
+    category: "school",
+    description: "E-commerce platform where San Francisco State students and faculty can purchase/sell digital media for extra income",
+    image: "images/works/gator-media/gator-media.png",
     popupLink: [
-      "https://www.youtube.com/watch?v=URVHRhBSjj8",
-      "https://www.youtube.com/watch?v=qf9z4ulfmYw",
+      "images/works/gator-media/gator-media-dash.png",
+      "images/works/gator-media/gator-media-details.png",
     ],
   },
   {
     id: 5,
-    title: "iMac Mockup Design",
-    category: "art",
-    image: "images/works/5.svg",
-    popupLink: ["images/works/5.svg"],
-  },
-  {
-    id: 6,
-    title: "Game Store App Concept",
-    category: "design",
-    image: "images/works/6.svg",
-    link: "https://dribbble.com",
-  },
-  {
-    id: 7,
-    title: "Project Managment Illustration",
-    category: "art",
-    image: "images/works/3.svg",
-    link: "https://pinterest.com",
-  },
-  {
-    id: 8,
-    title: "Guest App Walkthrough Screens",
-    category: "design",
-    image: "images/works/1.svg",
-    popupLink: ["images/works/1.svg"],
-  },
-  {
-    id: 9,
-    title: "Delivery App Wireframe",
-    category: "branding",
-    image: "images/works/4.svg",
-    popupLink: ["images/works/4.svg"],
-  },
-  {
-    id: 10,
-    title: "Game Store App Concept",
-    category: "design",
-    image: "images/works/6.svg",
-    link: "https://dribbble.com",
-  },
-  {
-    id: 11,
-    title: "Project Managment Illustration",
-    category: "art",
-    image: "images/works/3.svg",
-    link: "https://pinterest.com",
-  },
-  {
-    id: 12,
-    title: "Guest App Walkthrough Screens",
-    category: "design",
-    image: "images/works/1.svg",
-    popupLink: ["images/works/1.svg"],
-  },
-  {
-    id: 13,
-    title: "Delivery App Wireframe",
-    category: "branding",
-    image: "images/works/4.svg",
-    popupLink: ["images/works/4.svg"],
-  },
+    title: "Notekeeper",
+    category: "school",
+    description: "iOS app designed to help students keep track of their notes from class lectures by allowing them to store, type, or share them with each other",
+    image: "images/works/notekeeper.png",
+    popupLink: ["images/works/notekeeper.png"],
+  }
 ];
 
 function Works() {
@@ -156,6 +98,16 @@ function Works() {
     setVisibleItems(tempData);
   };
 
+  useEffect(() => {
+    if (dataVisibleCount > getAllItems.length) {
+      setNoMorePost(true);
+    } else if ((activeFilter && dataVisibleCount > visibleItems.length)) {
+      setNoMorePost(true);
+    } else {
+      setNoMorePost(false);
+    }
+  }, [dataVisibleCount, getAllItems, visibleItems, activeFilter])
+
   const handleLoadmore = (e) => {
     e.preventDefault();
     let tempCount = dataVisibleCount + dataIncrement;
@@ -164,7 +116,6 @@ function Works() {
     } else {
       setDataVisibleCount(tempCount);
       if (activeFilter === filters[0].text.toLowerCase()) {
-        console.log("they are same");
         setVisibleItems(getAllItems.filter((data) => data.id <= tempCount));
       } else {
         setVisibleItems(
@@ -179,7 +130,7 @@ function Works() {
   return (
     <section id="works">
       <div className="container">
-        <Pagetitle title="Recent Works" />
+        <Pagetitle title="Projects" />
         {/* Start Portfolio Filters */}
         <ScrollAnimation
           animateIn="fadeInUp"
@@ -214,22 +165,19 @@ function Works() {
           ))}
         </div>
         {/* End Portfolio Items */}
-
-        <div className="load-more text-center mt-4">
-          <button
-            className="btn btn-default"
-            onClick={handleLoadmore}
-            disabled={noMorePost ? "disabled" : null}
-          >
-            {noMorePost ? (
-              "No more items"
-            ) : (
+        
+        { noMorePost ? null :
+          <div className="load-more text-center mt-4">
+            <button
+              className="btn btn-default"
+              onClick={handleLoadmore}
+            >
               <span>
                 <i className="fas fa-spinner"></i> Load more
               </span>
-            )}
-          </button>
-        </div>
+            </button>
+          </div>
+        }
       </div>
     </section>
   );

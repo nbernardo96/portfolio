@@ -25,11 +25,10 @@ function Herosection(props) {
       <div className="container">
         <div className="intro">
           <img src="images/portrait.jpg" alt="Bolby" className="mb-4 portrait" />
-
           <h1 className="mb-2 mt-0">Hi! I'm Nicole.</h1>
-          <p>
             I'm a{" "}
             <Typewriter
+              className='typewriter'
               options={{
                 strings: [
                   "Front-End developer",
@@ -40,7 +39,6 @@ function Herosection(props) {
                 loop: true,
               }}
             />
-          </p>
 
           <ul className="social-icons light list-inline mb-0 mt-4">
             <li className="list-inline-item">

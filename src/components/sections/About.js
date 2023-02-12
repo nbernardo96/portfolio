@@ -8,7 +8,7 @@ const aboutContent = {
   name: "Bolby",
   avatarImage: "/images/portrait-art.jpg",
   content:
-    "I am a full stack software engineer with experience using modern technologies to integrate with API's and implement a wide variety of website features.",
+    "I am a full stack software engineer with experience using modern frontend frameworks to integrate with API's and implement a wide variety of website features.",
 };
 
 const progressData = [
