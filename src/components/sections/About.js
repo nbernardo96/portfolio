@@ -6,7 +6,7 @@ import Skill from "../elements/Skill";
 
 const aboutContent = {
   name: "Bolby",
-  avatarImage: "/images/portrait-art.jpg",
+  avatarImage: "/images/portrait-2.jpg",
   content:
     "I am a full stack software engineer with experience using modern frontend frameworks to integrate with API's and implement a wide variety of website features.",
 };
